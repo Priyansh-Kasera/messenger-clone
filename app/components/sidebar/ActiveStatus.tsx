@@ -5,7 +5,7 @@ import React from 'react'
 const ActiveStatus = () => {
     useActiveChannel();
     return (
-        <div>ActiveStatus</div>
+        <></>
     )
 }
 

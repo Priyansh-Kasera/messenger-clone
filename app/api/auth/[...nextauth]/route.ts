@@ -5,6 +5,8 @@ import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/app/libs/prismadb";
+import { NextRequest, NextResponse } from "next/server";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -57,6 +59,7 @@ export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-const handler = NextAuth(authOptions);
+const handler = (req: NextApiRequest, res: NextApiResponse) =>
+  NextAuth(req, res, authOptions);
 
 export { handler as GET, handler as POST };
